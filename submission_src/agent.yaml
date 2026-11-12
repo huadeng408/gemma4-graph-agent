@@ -1,0 +1,23 @@
+agent_class: LlmAgent
+name: gemma4_graph_swe_orchestrator
+model: gemma-4-e4b-it-qat-w4a16-ct
+description: >
+  Graph-Guided Steiner Neighborhood Retrieval and Execution-Verified Patch Synthesis Agent
+  powered uniformly by gemma-4-e4b-it-qat-w4a16-ct for the $10,000 Small Model Bonus.
+instruction: !include prompts/system.md
+generate_content_config: !include configs/sampling.yaml
+tools:
+  - get_status
+  - search_similar_code
+  - get_code_neighbors
+  - get_code_subgraph
+  - read_file
+  - edit_file
+  - write_file
+  - run_command
+  - submit_patch
+sub_agents:
+  - !include sub_agents/code_analyzer.yaml
+  - !include sub_agents/patch_verifier.yaml
+skills:
+  - skills/repo_navigation

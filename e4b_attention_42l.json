@@ -1,0 +1,264 @@
+{
+  "model_id": "google/gemma-4-E4B-it",
+  "num_paired_swe_probes": 16,
+  "unpruned_mean_delta_pos_tokens": 614.8,
+  "ast_pruned_mean_delta_pos_tokens": 134.8,
+  "sliding_35l_unpruned_caller_attn_mass": 0.0,
+  "sliding_35l_ast_pruned_caller_attn_mass": 0.068987,
+  "global_7l_unpruned_caller_attn_mass": 0.159714,
+  "global_7l_ast_pruned_caller_attn_mass": 0.185698,
+  "per_layer_attention_profile": [
+    {
+      "layer_idx": 0,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.095596
+    },
+    {
+      "layer_idx": 1,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.063644
+    },
+    {
+      "layer_idx": 2,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.103294
+    },
+    {
+      "layer_idx": 3,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.061723
+    },
+    {
+      "layer_idx": 4,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.084833
+    },
+    {
+      "layer_idx": 5,
+      "attention_type": "global_full",
+      "unpruned_caller_attn_mass": 0.246781,
+      "ast_pruned_caller_attn_mass": 0.258997
+    },
+    {
+      "layer_idx": 6,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.094887
+    },
+    {
+      "layer_idx": 7,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.090276
+    },
+    {
+      "layer_idx": 8,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.03464
+    },
+    {
+      "layer_idx": 9,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.056064
+    },
+    {
+      "layer_idx": 10,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.050987
+    },
+    {
+      "layer_idx": 11,
+      "attention_type": "global_full",
+      "unpruned_caller_attn_mass": 0.18053,
+      "ast_pruned_caller_attn_mass": 0.184894
+    },
+    {
+      "layer_idx": 12,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.052159
+    },
+    {
+      "layer_idx": 13,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.070168
+    },
+    {
+      "layer_idx": 14,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.092282
+    },
+    {
+      "layer_idx": 15,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.074784
+    },
+    {
+      "layer_idx": 16,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.066021
+    },
+    {
+      "layer_idx": 17,
+      "attention_type": "global_full",
+      "unpruned_caller_attn_mass": 0.161787,
+      "ast_pruned_caller_attn_mass": 0.219365
+    },
+    {
+      "layer_idx": 18,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.048333
+    },
+    {
+      "layer_idx": 19,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.062646
+    },
+    {
+      "layer_idx": 20,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.058007
+    },
+    {
+      "layer_idx": 21,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.071963
+    },
+    {
+      "layer_idx": 22,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.045942
+    },
+    {
+      "layer_idx": 23,
+      "attention_type": "global_full",
+      "unpruned_caller_attn_mass": 0.103749,
+      "ast_pruned_caller_attn_mass": 0.129109
+    },
+    {
+      "layer_idx": 24,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.04133
+    },
+    {
+      "layer_idx": 25,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.055075
+    },
+    {
+      "layer_idx": 26,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.071394
+    },
+    {
+      "layer_idx": 27,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.070501
+    },
+    {
+      "layer_idx": 28,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.062498
+    },
+    {
+      "layer_idx": 29,
+      "attention_type": "global_full",
+      "unpruned_caller_attn_mass": 0.15992,
+      "ast_pruned_caller_attn_mass": 0.201534
+    },
+    {
+      "layer_idx": 30,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.078637
+    },
+    {
+      "layer_idx": 31,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.072442
+    },
+    {
+      "layer_idx": 32,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.081611
+    },
+    {
+      "layer_idx": 33,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.053484
+    },
+    {
+      "layer_idx": 34,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.086834
+    },
+    {
+      "layer_idx": 35,
+      "attention_type": "global_full",
+      "unpruned_caller_attn_mass": 0.148869,
+      "ast_pruned_caller_attn_mass": 0.167247
+    },
+    {
+      "layer_idx": 36,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.042841
+    },
+    {
+      "layer_idx": 37,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.069961
+    },
+    {
+      "layer_idx": 38,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.088971
+    },
+    {
+      "layer_idx": 39,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.081806
+    },
+    {
+      "layer_idx": 40,
+      "attention_type": "sliding_w512",
+      "unpruned_caller_attn_mass": 0.0,
+      "ast_pruned_caller_attn_mass": 0.078921
+    },
+    {
+      "layer_idx": 41,
+      "attention_type": "global_full",
+      "unpruned_caller_attn_mass": 0.116363,
+      "ast_pruned_caller_attn_mass": 0.138741
+    }
+  ]
+}

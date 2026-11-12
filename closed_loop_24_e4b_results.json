@@ -1,0 +1,1534 @@
+{
+  "model_id": "google/gemma-4-E4B-it",
+  "zero_static_candidates_verified": true,
+  "num_closed_loop_tasks": 24,
+  "pytest_verification_elapsed_sec": 1922.99,
+  "summary_by_regime": {
+    "flat_react_grep": {
+      "total_tasks": 24,
+      "syntax_valid_count": 22,
+      "syntax_valid_pct": 91.7,
+      "target_pytest_pass_count": 13,
+      "target_pytest_pass_pct": 54.2,
+      "hop1_caller_pytest_pass_count": 10,
+      "hop1_caller_pytest_pass_pct": 41.7,
+      "resolved_count": 6,
+      "resolved_pct": 25.0,
+      "resolved_95ci_pct": [
+        8.3,
+        41.7
+      ],
+      "paired_gain_vs_flat_pp_95ci": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_vs_flat_p": 1.0,
+      "mean_tokens": 2250,
+      "median_tokens": 2202,
+      "per_tier_resolved": {
+        "tier1_single_module_contract": {
+          "resolved": 5,
+          "total": 8,
+          "pct": 62.5
+        },
+        "tier2_hop1_caller_bridge": {
+          "resolved": 0,
+          "total": 8,
+          "pct": 0.0
+        },
+        "tier3_multihop_dynamic_dispatch": {
+          "resolved": 1,
+          "total": 8,
+          "pct": 12.5
+        }
+      }
+    },
+    "steiner_single_shot": {
+      "total_tasks": 24,
+      "syntax_valid_count": 24,
+      "syntax_valid_pct": 100.0,
+      "target_pytest_pass_count": 15,
+      "target_pytest_pass_pct": 62.5,
+      "hop1_caller_pytest_pass_count": 14,
+      "hop1_caller_pytest_pass_pct": 58.3,
+      "resolved_count": 8,
+      "resolved_pct": 33.3,
+      "resolved_95ci_pct": [
+        16.7,
+        54.2
+      ],
+      "paired_gain_vs_flat_pp_95ci": [
+        -8.3,
+        25.0
+      ],
+      "mcnemar_vs_flat_p": 0.625,
+      "mean_tokens": 801,
+      "median_tokens": 786,
+      "per_tier_resolved": {
+        "tier1_single_module_contract": {
+          "resolved": 4,
+          "total": 8,
+          "pct": 50.0
+        },
+        "tier2_hop1_caller_bridge": {
+          "resolved": 2,
+          "total": 8,
+          "pct": 25.0
+        },
+        "tier3_multihop_dynamic_dispatch": {
+          "resolved": 2,
+          "total": 8,
+          "pct": 25.0
+        }
+      }
+    },
+    "g4_graph_agent_full": {
+      "total_tasks": 24,
+      "syntax_valid_count": 24,
+      "syntax_valid_pct": 100.0,
+      "target_pytest_pass_count": 17,
+      "target_pytest_pass_pct": 70.8,
+      "hop1_caller_pytest_pass_count": 14,
+      "hop1_caller_pytest_pass_pct": 58.3,
+      "resolved_count": 9,
+      "resolved_pct": 37.5,
+      "resolved_95ci_pct": [
+        20.8,
+        58.3
+      ],
+      "paired_gain_vs_flat_pp_95ci": [
+        -4.2,
+        29.2
+      ],
+      "mcnemar_vs_flat_p": 0.375,
+      "mean_tokens": 1495,
+      "median_tokens": 1614,
+      "per_tier_resolved": {
+        "tier1_single_module_contract": {
+          "resolved": 4,
+          "total": 8,
+          "pct": 50.0
+        },
+        "tier2_hop1_caller_bridge": {
+          "resolved": 2,
+          "total": 8,
+          "pct": 25.0
+        },
+        "tier3_multihop_dynamic_dispatch": {
+          "resolved": 3,
+          "total": 8,
+          "pct": 37.5
+        }
+      },
+      "vs_steiner_1shot_stats": {
+        "rate_95ci_pct": [
+          20.8,
+          58.3
+        ],
+        "paired_gain_pp_95ci": [
+          0.0,
+          12.5
+        ],
+        "discordant_wins_b01": 1,
+        "discordant_losses_b10": 0,
+        "mcnemar_exact_p": 1.0
+      }
+    }
+  },
+  "failure_cases": [
+    {
+      "task_id": "cl_fastapi_01",
+      "repo": "fastapi/fastapi",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "normalize_route_path",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "=========== FAILURES ===================================\n________________ test_caller_tuple_contract_and_root_preserved _________________\ntests/test_caller_regression.py:6: in test_caller_tuple_contract_and_root_preserved\n    assert res_root['full_path'] == '/'\nE   AssertionError: assert '' == '/'\nE     \nE     - /\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_caller_tuple_contract_and_root_preserved\n1 failed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_fastapi_02",
+      "repo": "fastapi/fastapi",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "build_dep_cache_key",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "solve_dependency_tree('auth', raw, use_cache=False)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/caller.py:11: in resolve_dependency_tree\n    raise ValueError('Uncached call must return empty scope tuple and False')\nE   ValueError: Uncached call must return empty scope tuple and False\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_caller_scopes_not_mutated_and_no_cache_mode\n1 failed in 0.02s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_fastapi_05",
+      "repo": "fastapi/fastapi",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "classify_status_body_policy",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "caller_regression.py:5: in test_1xx_205_and_str_status_codes_supported\n    res = build_route_response(sc, 'hello')\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/caller.py:8: in build_route_response\n    raise ValueError(f'RFC 9110 forbids body for status {code}')\nE   ValueError: RFC 9110 forbids body for status 100\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_1xx_205_and_str_status_codes_supported\n1 failed in 0.02s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_fastapi_06",
+      "repo": "fastapi/fastapi",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "dispatch_lifespan_event",
+      "has_runtime_dispatch_module": true,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "pkg/runtime_dispatch.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "pkg/runtime_dispatch.py:17: in invoke_dynamic_phase_registry\n    return handler(plan)\n           ^^^^^^^^^^^^^\npkg/runtime_dispatch.py:5: in on_startup\n    raise RuntimeError('Missing dynamic registry phase_token required by on_startup')\nE   RuntimeError: Missing dynamic registry phase_token required by on_startup\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_dynamic_getattr_registry_token_handshake\n1 failed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_rich_07",
+      "repo": "Textualize/rich",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "slice_style_spans",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "___________\ntests/test_caller_regression.py:6: in test_end_none_and_empty_style_filtered\n    assert res['spans'] == [(0, 4, 'cyan'), (2, 8, 'underline')]\nE   AssertionError: assert [] == [(0, 4, 'cyan... 'underline')]\nE     \nE     Right contains 2 more items, first extra item: (0, 4, 'cyan')\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_end_none_and_empty_style_filtered\n1 failed in 0.02s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_rich_08",
+      "repo": "Textualize/rich",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "clamp_column_width",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "d_keyword_and_bounds ______________________\ntests/test_caller_regression.py:4: in test_caller_pad_keyword_and_bounds\n    assert layout_table_row(['abc'], min_w=2, max_w=10, pad=2) == [(5, False)]\nE   assert [(3, False)] == [(5, False)]\nE     \nE     At index 0 diff: (3, False) != (5, False)\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_caller_pad_keyword_and_bounds - ...\n1 failed in 0.02s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_rich_09",
+      "repo": "Textualize/rich",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "escape_markup_tags",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "_brackets\n    res = format_log_record('APP', '[a][b]')\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/caller.py:4: in format_log_record\n    escaped, n_esc = escape_markup_tags(msg)\n                     ^^^^^^^^^^^^^^^^^^^^^^^\npkg/bridge.py:40: in escape_markup_tags\n    escap\nE   NameError: name 'escap' is not defined\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_none_msg_and_leading_brackets - ...\n1 failed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_rich_10",
+      "repo": "Textualize/rich",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "compute_progress_ratio",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "lamped _____________________\ntests/test_target.py:5: in test_zero_total_and_overflow_clamped\n    assert r_zero['pct'] == 0.0 and r_zero['indeterminate'] is False\nE   assert (100.0 == 0.0)\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_zero_total_and_overflow_clamped - assert (1...\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.00s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_rich_12",
+      "repo": "Textualize/rich",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "coalesce_adjacent_segments",
+      "has_runtime_dispatch_module": true,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "pkg/runtime_dispatch.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "turn super().render_tokens(segs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/runtime_dispatch.py:10: in render_tokens\n    raise RuntimeError('Diamond MRO BorderMixin expected __mro_sync__ sentinel from cooperative super()')\nE   RuntimeError: Diamond MRO BorderMixin expected __mro_sync__ sentinel from cooperative super()\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_diamond_mro_panel_render - Runti...\n1 failed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_requests_13",
+      "repo": "psf/requests",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "should_strip_auth_on_redirect",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": " r_same.get('Authorization') == 'Bearer secret'\nE   AssertionError: assert None == 'Bearer secret'\nE    +  where None = <built-in method get of dict object at 0x7b10b15fb7c0>('Authorization')\nE    +    where <built-in method get of dict object at 0x7b10b15fb7c0> = {'Accept': '*/*'}.get\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_same_origin_and_http_to_https_upgrade_on_standard_ports_preserve_auth\n1 failed in 0.02s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_requests_17",
+      "repo": "psf/requests",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "compute_backoff_delay",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "': False} == {'delay': 0.5...apped': False}\nE     \nE     Omitting 1 identical items, use -vv to show\nE     Differing items:\nE     {'delay': 0.0} != {'delay': 0.5}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_standard_urllib3_backoff_schedule_and_cap\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_requests_18",
+      "repo": "psf/requests",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "resolve_adapter_mount",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "\nE     Differing items:\nE     {'prefix': 'https://api.example.com/v1'} != {'prefix': 'https://'}\nE     {'adapter': 'v1_custom'} != {'adapter': 'default_tls'}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_longest_prefix_on_segment_boundary - Assert...\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_httpx_22",
+      "repo": "encode/httpx",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "iter_byte_chunks",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "    Omitting 1 identical items, use -vv to show\nE     Differing items:\nE     {'num_chunks': 1} != {'num_chunks': 0}\nE     {'chunks': [b'']} != {'chunks': []}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_empty_bytes_and_invalid_chunk_size - Assert...\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_httpx_23",
+      "repo": "encode/httpx",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "normalize_origin_tuple",
+      "has_runtime_dispatch_module": false,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "\nE     \nE     Omitting 2 identical items, use -vv to show\nE     Differing items:\nE     {'origin': 'https://example.com:443'} != {'origin': 'https://example.com'}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_default_ports_stripped_and_host_lowercased\n1 failed in 0.02s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+      "clean_git_rollback_executed": true
+    },
+    {
+      "task_id": "cl_httpx_24",
+      "repo": "encode/httpx",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "release_pool_lease",
+      "has_runtime_dispatch_module": true,
+      "actual_files_in_workspace": [
+        "pkg/__init__.py",
+        "pkg/bridge.py",
+        "pkg/caller.py",
+        "pkg/legacy_helpers.py",
+        "pkg/runtime_dispatch.py",
+        "tests/test_caller_regression.py",
+        "tests/test_target.py"
+      ],
+      "pytest_failure_excerpt": "e(pool, 'conn_1')['released'] is False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/runtime_dispatch.py:9: in _wrapped\n    raise RuntimeError('Closure guard _closure_epoch was not reset across idempotent release')\nE   RuntimeError: Closure guard _closure_epoch was not reset across idempotent release\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_transactional_decorator_closure_idempotent_release\n1 failed in 0.01s",
+      "clean_git_rollback_executed": true
+    }
+  ],
+  "task_results": [
+    {
+      "task_id": "cl_fastapi_01",
+      "repo": "fastapi/fastapi",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "normalize_route_path",
+      "skeletal_context_tokens": 179,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 129,
+        "total_tokens": 2177,
+        "generated_code": "def normalize_route_path(prefix: str, path: str) -> str:\n    \"\"\"Combine router prefix and endpoint path.\"\"\"\n    if not prefix:\n        return path.lstrip('/')\n\n    clean_prefix = prefix.strip('/')\n    if not clean_prefix:\n        return path.lstrip('/')\n\n    if not path:\n        return '/' + clean_prefix\n\n    clean_path = path.lstrip('/')\n\n    if not clean_path:\n        return '/' + clean_prefix\n\n    return '/' + clean_prefix + '/' + clean_path\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 682,
+        "completion_tokens": 174,
+        "total_tokens": 856,
+        "generated_code": "def normalize_route_path(prefix: str, path: str, trailing_ok: bool = False) -> str:\n    clean_prefix = '/' + prefix.strip('/') if prefix.strip('/') else ''\n    if path:\n        clean_path = '/' + path.lstrip('/')\n    else:\n        clean_path = ''\n\n    full_path = clean_prefix + clean_path\n\n    if not full_path and prefix:\n        return '/' + prefix.strip('/')\n\n    if not full_path and not prefix and not path:\n        return ''\n\n    if full_path and not trailing_ok and full_path.endswith('/') and len(full_path) > 1:\n        return full_path.rstrip('/')\n\n    return full_path\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 894,
+        "retry_completion_tokens": 178,
+        "total_tokens": 1928,
+        "generated_code": "def normalize_route_path(prefix: str, path: str, trailing_ok: bool = False) -> str:\n    clean_prefix = '/' + prefix.strip('/') if prefix.strip('/') else ''\n    \n    if path:\n        clean_path = '/' + path.lstrip('/')\n    else:\n        clean_path = ''\n        \n    full_path = clean_prefix + clean_path\n\n    if not full_path and prefix:\n        return '/' + prefix.strip('/')\n\n    if not full_path and not prefix and not path:\n        return ''\n\n    if full_path and not trailing_ok and full_path.endswith('/') and len(full_path) > 1:\n        return full_path.rstrip('/')\n\n    return full_path\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "=========== FAILURES ===================================\n________________ test_caller_tuple_contract_and_root_preserved _________________\ntests/test_caller_regression.py:6: in test_caller_tuple_contract_and_root_preserved\n    assert res_root['full_path'] == '/'\nE   AssertionError: assert '' == '/'\nE     \nE     - /\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_caller_tuple_contract_and_root_preserved\n1 failed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_fastapi_02",
+      "repo": "fastapi/fastapi",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "build_dep_cache_key",
+      "skeletal_context_tokens": 192,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 69,
+        "total_tokens": 2117,
+        "generated_code": "def build_dep_cache_key(call_name: str, scopes: list[str]) -> tuple:\n    \"\"\"Construct dependency cache key tuple.\"\"\"\n    unique_scopes = sorted(list(set(scopes)))\n    return (call_name, tuple(unique_scopes), True)\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 690,
+        "completion_tokens": 74,
+        "total_tokens": 764,
+        "generated_code": "def build_dep_cache_key(call_name: str, scopes: list[str], use_cache: bool = True) -> tuple:\n    deduplicated_scopes = sorted(list(set(scopes)))\n    return (call_name, tuple(deduplicated_scopes), use_cache)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 830,
+        "retry_completion_tokens": 74,
+        "total_tokens": 1668,
+        "generated_code": "def build_dep_cache_key(call_name: str, scopes: list[str], use_cache: bool = True) -> tuple:\n    deduplicated_scopes = sorted(list(set(scopes)))\n    return (call_name, tuple(deduplicated_scopes), use_cache)\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "solve_dependency_tree('auth', raw, use_cache=False)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/caller.py:11: in resolve_dependency_tree\n    raise ValueError('Uncached call must return empty scope tuple and False')\nE   ValueError: Uncached call must return empty scope tuple and False\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_caller_scopes_not_mutated_and_no_cache_mode\n1 failed in 0.02s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_fastapi_03",
+      "repo": "fastapi/fastapi",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "merge_response_headers",
+      "skeletal_context_tokens": 168,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 2048,
+        "completion_tokens": 125,
+        "total_tokens": 2173,
+        "generated_code": "def merge_response_headers(defaults: dict[str, str], overrides: dict[str, str] | None = None) -> dict[str, str]:\n    \"\"\"Merge override headers into defaults, normalizing keys to lowercase.\"\"\"\n    merged = {}\n    \n    # Process defaults\n    for key, value in defaults.items():\n        merged[key.lower()] = value\n\n    # Process overrides\n    if overrides:\n        for key, value in overrides.items():\n            merged[key.lower()] = value\n            \n    return merged\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 605,
+        "completion_tokens": 288,
+        "total_tokens": 893,
+        "generated_code": "def merge_response_headers(defaults: dict[str, str], overrides: dict[str, str] | None = None) -> dict[str, str]:\n    merged = {}\n    for key, value in defaults.items():\n        merged[key] = value\n\n    if overrides:\n        for key, value in overrides.items():\n            lower_key = key.lower()\n            if lower_key not in merged:\n                merged[lower_key] = value\n            else:\n                # If the key exists (case-insensitively), we keep the existing one\n                # unless the new one is explicitly meant to override, but based on the\n                # issue description (\"merging ... leaves duplicate case-insensitive keys\n                # instead of normalizing all keys to lowercase\"), we should normalize\n                # the final keys to lowercase.\n                merged[lower_key] = value\n\n    # Re-process defaults to ensure all keys are lowercase for consistency\n    final_headers = {}\n    for key, value in defaults.items():\n        final_headers[key.lower()] = value\n\n    # Merge overrides, ensuring keys are lowercase\n    if overrides:\n        for key, value in overrides.items():\n            final_headers[key.lower()] = value\n\n    return final_headers\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 893,
+        "generated_code": "def merge_response_headers(defaults: dict[str, str], overrides: dict[str, str] | None = None) -> dict[str, str]:\n    merged = {}\n    for key, value in defaults.items():\n        merged[key] = value\n\n    if overrides:\n        for key, value in overrides.items():\n            lower_key = key.lower()\n            if lower_key not in merged:\n                merged[lower_key] = value\n            else:\n                # If the key exists (case-insensitively), we keep the existing one\n                # unless the new one is explicitly meant to override, but based on the\n                # issue description (\"merging ... leaves duplicate case-insensitive keys\n                # instead of normalizing all keys to lowercase\"), we should normalize\n                # the final keys to lowercase.\n                merged[lower_key] = value\n\n    # Re-process defaults to ensure all keys are lowercase for consistency\n    final_headers = {}\n    for key, value in defaults.items():\n        final_headers[key.lower()] = value\n\n    # Merge overrides, ensuring keys are lowercase\n    if overrides:\n        for key, value in overrides.items():\n            final_headers[key.lower()] = value\n\n    return final_headers\n"
+      }
+    },
+    {
+      "task_id": "cl_fastapi_04",
+      "repo": "fastapi/fastapi",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "coerce_query_flag",
+      "skeletal_context_tokens": 172,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 2048,
+        "completion_tokens": 153,
+        "total_tokens": 2201,
+        "generated_code": "def coerce_query_flag(val: object, default: bool = False) -> tuple[bool, str]:\n    \"\"\"Coerce query flag to (bool_val, source_tag) where None uses (default, 'default').\"\"\"\n    if val is None:\n        return (default, 'default')\n    if isinstance(val, str):\n        val_lower = val.lower()\n        if val_lower in ('false', 'no', '0'):\n            return (False, 'explicit')\n        if val_lower in ('true', 'yes', '1'):\n            return (True, 'explicit')\n    return (bool(val), 'explicit')\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 583,
+        "completion_tokens": 118,
+        "total_tokens": 701,
+        "generated_code": "def coerce_query_flag(val: object, default: bool = False) -> tuple[bool, str]:\n    if val is None:\n        return (default, 'default')\n    if isinstance(val, str):\n        if val.lower() in ('false', 'no', '0'):\n            return (False, 'explicit')\n        if val.lower() in ('true', 'yes', '1'):\n            return (True, 'explicit')\n    return (bool(val), 'explicit')\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 701,
+        "generated_code": "def coerce_query_flag(val: object, default: bool = False) -> tuple[bool, str]:\n    if val is None:\n        return (default, 'default')\n    if isinstance(val, str):\n        if val.lower() in ('false', 'no', '0'):\n            return (False, 'explicit')\n        if val.lower() in ('true', 'yes', '1'):\n            return (True, 'explicit')\n    return (bool(val), 'explicit')\n"
+      }
+    },
+    {
+      "task_id": "cl_fastapi_05",
+      "repo": "fastapi/fastapi",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "classify_status_body_policy",
+      "skeletal_context_tokens": 185,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 78,
+        "total_tokens": 2126,
+        "generated_code": "def classify_status_body_policy(status_code: int) -> tuple[int, bool]:\n    \"\"\"Return (status_code, allow_body).\"\"\"\n    if status_code in (204, 304):\n        return (status_code, False)\n    return (status_code, True)\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 643,
+        "completion_tokens": 69,
+        "total_tokens": 712,
+        "generated_code": "def classify_status_body_policy(status_code: int) -> tuple[int, bool]:\n    if status_code == 204 or status_code == 304:\n        return (status_code, False)\n    return (status_code, True)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 797,
+        "retry_completion_tokens": 106,
+        "total_tokens": 1615,
+        "generated_code": "def classify_status_body_policy(status_code: int | str) -> tuple[int, bool]:\n    try:\n        status_code_int = int(status_code)\n    except TypeError:\n        return (status_code, True)\n\n    if status_code_int in (204, 304):\n        return (status_code_int, False)\n    return (status_code_int, True)\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "caller_regression.py:5: in test_1xx_205_and_str_status_codes_supported\n    res = build_route_response(sc, 'hello')\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/caller.py:8: in build_route_response\n    raise ValueError(f'RFC 9110 forbids body for status {code}')\nE   ValueError: RFC 9110 forbids body for status 100\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_1xx_205_and_str_status_codes_supported\n1 failed in 0.02s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_fastapi_06",
+      "repo": "fastapi/fastapi",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "dispatch_lifespan_event",
+      "skeletal_context_tokens": 151,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 112,
+        "total_tokens": 2160,
+        "generated_code": "def dispatch_lifespan_event(phase: str, events: list[str]) -> dict[str, object]:\n    \"\"\"Normalize lifespan phase and deduplicate event hooks.\"\"\"\n    seen = set()\n    deduplicated_events = []\n    for event in events:\n        if event not in seen:\n            deduplicated_events.append(event)\n            seen.add(event)\n    return {'phase': phase.strip(), 'events': deduplicated_events}\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 525,
+        "completion_tokens": 113,
+        "total_tokens": 638,
+        "generated_code": "def dispatch_lifespan_event(phase: str, events: list[str]) -> dict[str, object]:\n    \"\"\"Normalize lifespan phase and deduplicate event hooks.\"\"\"\n    unique_events = []\n    seen_events = set()\n    for event in events:\n        if event not in seen_events:\n            unique_events.append(event)\n            seen_events.add(event)\n    return {'phase': phase.strip(), 'events': unique_events}\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 737,
+        "retry_completion_tokens": 116,
+        "total_tokens": 1491,
+        "generated_code": "def dispatch_lifespan_event(phase: str, events: list[str] = None) -> dict[str, object]:\n    if events is None:\n        events = []\n    unique_events = []\n    seen_events = set()\n    for event in events:\n        if event not in seen_events:\n            unique_events.append(event)\n            seen_events.add(event)\n    return {'phase': phase.strip(), 'events': unique_events}\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": true,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "pkg/runtime_dispatch.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "pkg/runtime_dispatch.py:17: in invoke_dynamic_phase_registry\n    return handler(plan)\n           ^^^^^^^^^^^^^\npkg/runtime_dispatch.py:5: in on_startup\n    raise RuntimeError('Missing dynamic registry phase_token required by on_startup')\nE   RuntimeError: Missing dynamic registry phase_token required by on_startup\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_dynamic_getattr_registry_token_handshake\n1 failed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_rich_07",
+      "repo": "Textualize/rich",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "slice_style_spans",
+      "skeletal_context_tokens": 245,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 158,
+        "total_tokens": 2206,
+        "generated_code": "def slice_style_spans(spans: list[tuple[int, int, str]], start: int, end: int) -> list[tuple[int, int, str]]:\n    \"\"\"Shift and clamp (span_start, span_end, style) to [0, end - start].\"\"\"\n    out: list[tuple[int, int, str]] = []\n    width = max(0, end - start)\n    for s, e, style in spans:\n        ns = max(0, s - start)\n        ne = min(width, e - start)\n        if ns < ne:\n            out.append((ns, ne, style))\n    return out\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 824,
+        "completion_tokens": 179,
+        "total_tokens": 1003,
+        "generated_code": "def slice_style_spans(spans: list[tuple[int, int, str]], start: int, end: int | None = None) -> list[tuple[int, int, str]]:\n    out: list[tuple[int, int, str]] = []\n    if end is None:\n        end = start + (end if end is not None else 0)\n    \n    if end <= start:\n        return []\n\n    width = max(0, end - start)\n    \n    for s, e, style in spans:\n        ns = max(0, s - start)\n        ne = min(width, e - start)\n        \n        if ns < ne:\n            out.append((ns, ne, style))\n            \n    return out\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 1019,
+        "retry_completion_tokens": 161,
+        "total_tokens": 2183,
+        "generated_code": "def slice_style_spans(spans: list[tuple[int, int, str]], start: int, end: int | None = None) -> list[tuple[int, int, str]]:\n    if end is None:\n        end = start\n    \n    if end <= start:\n        return []\n\n    width = max(0, end - start)\n    out: list[tuple[int, int, str]] = []\n    for s, e, style in spans:\n        ns = max(0, s - start)\n        ne = min(width, e - start)\n        if ns < ne:\n            out.append((ns, ne, style))\n    return out\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "___________\ntests/test_caller_regression.py:6: in test_end_none_and_empty_style_filtered\n    assert res['spans'] == [(0, 4, 'cyan'), (2, 8, 'underline')]\nE   AssertionError: assert [] == [(0, 4, 'cyan... 'underline')]\nE     \nE     Right contains 2 more items, first extra item: (0, 4, 'cyan')\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_end_none_and_empty_style_filtered\n1 failed in 0.02s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_rich_08",
+      "repo": "Textualize/rich",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "clamp_column_width",
+      "skeletal_context_tokens": 220,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 144,
+        "total_tokens": 2192,
+        "generated_code": "def clamp_column_width(content_len: int, min_width: int | None, max_width: int | None) -> tuple[int, bool]:\n    \"\"\"Clamp column width and return (width, was_truncated).\"\"\"\n    w = content_len\n    if max_width is not None:\n        w = min(w, max_width)\n    if min_width is not None:\n        w = max(w, min_width)\n        if min_width > max_width:\n            w = min(w, max_width)\n    return (w, w < content_len)\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 669,
+        "completion_tokens": 108,
+        "total_tokens": 777,
+        "generated_code": "def clamp_column_width(content_len: int, min_width: int | None = None, max_width: int | None = None) -> tuple[int, bool]:\n    w = content_len\n    if max_width is not None:\n        w = min(w, max_width)\n    if min_width is not None:\n        w = max(w, min_width)\n    return (w, w < content_len)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 978,
+        "retry_completion_tokens": 148,
+        "total_tokens": 1903,
+        "generated_code": "def clamp_column_width(content_len: int, min_width: int | None = None, max_width: int | None = None, pad: int = 0) -> tuple[int, bool]:\n    w = content_len\n    if max_width is not None:\n        w = min(w, max_width)\n    if min_width is not None:\n        w = max(w, min_width)\n    if min_width is not None and max_width is not None and min_width > max_width:\n        w = max_width\n    return (w, w < content_len)\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "d_keyword_and_bounds ______________________\ntests/test_caller_regression.py:4: in test_caller_pad_keyword_and_bounds\n    assert layout_table_row(['abc'], min_w=2, max_w=10, pad=2) == [(5, False)]\nE   assert [(3, False)] == [(5, False)]\nE     \nE     At index 0 diff: (3, False) != (5, False)\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_caller_pad_keyword_and_bounds - ...\n1 failed in 0.02s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_rich_09",
+      "repo": "Textualize/rich",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "escape_markup_tags",
+      "skeletal_context_tokens": 196,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 448,
+        "total_tokens": 2496,
+        "generated_code": "import re\n\ndef escape_markup_tags(text: str | None) -> tuple[str, int]:\n    r\"\"\"Escape unescaped opening brackets `[` as `\\[` and return (escaped_text, num_newly_escaped).\"\"\"\n    if text is None:\n        return ('', 0)\n    \n    def replacer(match):\n        return r'\\\\['\n\n    # Use negative lookbehind to find '[' that is not preceded by '\\'\n    # This handles already escaped sequences like '\\[INFO]' correctly.\n    # We need to count how many replacements were made.\n    \n    # First, count all '[' characters.\n    total_brackets = text.count('[')\n    \n    # Second, count how many are preceded by an odd number of backslashes (i.e., not escaped).\n    # A '[' preceded by an even number of '\\' (including zero) is unescaped.\n    \n    # We iterate through the string to count unescaped '['\n    unescaped_count = 0\n    i = 0\n    while i < len(text):\n        if text[i] == '[':\n            # Check preceding characters for backslashes\n            backslash_count = 0\n            j = i - 1\n            while j >= 0 and text[j] == '\\\\':\n                backslash_count += 1\n                j -= 1\n            \n            # If the count of preceding backslashes is even (0, 2, 4, ...), the '[' is unescaped.\n            if backslash_count % 2 == 0:\n                unescaped_count += 1\n        i += 1\n\n    # Perform the replacement: replace only unescaped '[' with '\\['.\n    # We use a regex that matches '[' only if it is not preceded by '\\' (negative lookbehind).\n    # Note: Python's re module requires fixed-width lookbehinds, so we must match the context.\n    # Since\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 610,
+        "completion_tokens": 448,
+        "total_tokens": 1058,
+        "generated_code": "import re\n\ndef escape_markup_tags(text: str | None) -> tuple[str, int]:\n    if text is None:\n        return ('', 0)\n    \n    def replacer(match):\n        return r'\\['\n\n    # Count occurrences of '[' not preceded by '\\'\n    count = 0\n    for i, char in enumerate(text):\n        if char == '[' and (i == 0 or text[i-1] != '\\\\'):\n            count += 1\n            \n    # Replace '[' only if it's not preceded by an odd number of backslashes\n    # This is complex to do purely with replace, so we use regex substitution\n    # to achieve the desired behavior: replace unescaped '[' with '\\['.\n    # We need a negative lookbehind assertion to ensure the preceding character is not '\\'.\n    # However, Python's re module has limitations on variable-width lookbehinds.\n    # A simpler, iterative approach matching the intended logic is safer here,\n    # but since the original implementation was flawed (it escaped all '['),\n    # we must implement the correct logic: escape '[' only if it's not preceded by '\\'.\n\n    # Correct implementation using regex to find unescaped '['\n    # Find '[' not preceded by '\\'\n    def replace_unescaped(match):\n        return r'\\['\n\n    # Use re.sub with a lambda function to count and replace simultaneously\n    def count_and_replace(match):\n        nonlocal count\n        count += 1\n        return r'\\['\n\n    # Find all '[' that are not preceded by '\\'\n    # This pattern matches '[' if it is preceded by either the start of the string (^), or any character that is not '\\'.\n    # We use a capturing group for the preceding context if it exists, but since we only want to replace '[',\n    # we rely on the lookbehind assertion (?<!\\\\).\n    \n    # Note: (?<!\\\\) asserts that the preceding character is not\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 1228,
+        "retry_completion_tokens": 448,
+        "total_tokens": 2734,
+        "generated_code": "import re\n\ndef escape_markup_tags(text: str | None) -> tuple[str, int]:\n    if text is None:\n        return ('', 0)\n    \n    def replacer(match):\n        return r'\\['\n\n    def count_and_replace(match):\n        return r'\\['\n\n    # Find all '[' that are not preceded by '\\'\n    # (?<!\\\\) is a negative lookbehind assertion.\n    # This matches '[' only if it is not preceded by a backslash.\n    escaped_text = re.sub(r'(?<!\\\\)\\[', r'\\[', text)\n    \n    # The original function counted all '['. The requirement is to escape unescaped '['.\n    # If we use re.sub, we replace and count simultaneously.\n    \n    # Count occurrences of '[' not preceded by '\\'\n    # We count the matches found by the regex substitution.\n    count = len(re.findall(r'(?<!\\\\)\\[', text))\n    \n    # The desired behavior is: replace unescaped '[' with '\\['.\n    # If the input is '\\[INFO]', the output should be '\\[INFO]' (count 0).\n    # If the input is '[INFO]', the output should be '\\[INFO]' (count 1).\n    \n    # Let's re-implement the replacement to ensure correctness based on the bug description:\n    # Bug: escape_markup_tags escapes every `[` including already escaped `\\[` sequences, turning `\\[INFO]` into `\\\\[INFO]`.\n    # Goal: Escape unescaped opening brackets `[` as `\\[` and return (escaped_text, num_newly_escaped).\n    \n    # 1. Find all '[' not preceded by '\\'.\n    # 2. Replace them with '\\['.\n    \n    def replacer_final(match):\n        return r'\\['\n\n    # Use re.sub to replace unescaped '[' with '\\['\n    escap\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "_brackets\n    res = format_log_record('APP', '[a][b]')\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/caller.py:4: in format_log_record\n    escaped, n_esc = escape_markup_tags(msg)\n                     ^^^^^^^^^^^^^^^^^^^^^^^\npkg/bridge.py:40: in escape_markup_tags\n    escap\nE   NameError: name 'escap' is not defined\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_none_msg_and_leading_brackets - ...\n1 failed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_rich_10",
+      "repo": "Textualize/rich",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "compute_progress_ratio",
+      "skeletal_context_tokens": 199,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 154,
+        "total_tokens": 2202,
+        "generated_code": "def compute_progress_ratio(completed: float, total: float | None) -> tuple[float, bool]:\n    \"\"\"Return (percentage_0_to_100, is_indeterminate).\"\"\"\n    if total is None:\n        return (0.0, True)\n    if total == 0.0:\n        return (100.0, False) if completed >= 0 else (0.0, False)\n\n    # Ensure completed does not exceed total for percentage calculation\n    ratio = min(completed / total, 1.0)\n    pct = ratio * 100.0\n    return (round(pct, 2), False)\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 659,
+        "completion_tokens": 161,
+        "total_tokens": 820,
+        "generated_code": "def compute_progress_ratio(completed: float, total: float | None) -> tuple[float, bool]:\n    if total is None:\n        return (0.0, True)\n    if total == 0.0:\n        return (100.0, False) if completed >= 0 else (0.0, False)\n    \n    pct = (completed / total) * 100.0\n    \n    if pct > 100.0:\n        return (100.0, False)\n    if pct < 0.0:\n        return (0.0, False)\n        \n    return (round(pct, 2), False)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 835,
+        "retry_completion_tokens": 161,
+        "total_tokens": 1816,
+        "generated_code": "def compute_progress_ratio(completed: float, total: float | None) -> tuple[float, bool]:\n    if total is None:\n        return (0.0, True)\n    if total == 0.0:\n        return (100.0, False) if completed >= 0 else (0.0, False)\n    \n    pct = (completed / total) * 100.0\n    \n    if pct > 100.0:\n        return (100.0, False)\n    if pct < 0.0:\n        return (0.0, False)\n        \n    return (round(pct, 2), False)\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "lamped _____________________\ntests/test_target.py:5: in test_zero_total_and_overflow_clamped\n    assert r_zero['pct'] == 0.0 and r_zero['indeterminate'] is False\nE   assert (100.0 == 0.0)\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_zero_total_and_overflow_clamped - assert (1...\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.00s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_rich_11",
+      "repo": "Textualize/rich",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "strip_ansi_codes",
+      "skeletal_context_tokens": 158,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 448,
+        "total_tokens": 2496,
+        "generated_code": "import re\n\ndef strip_ansi_codes(text: str) -> tuple[str, int]:\n    \"\"\"Strip all CSI ANSI escape sequences and return (clean_text, visible_len).\"\"\"\n    # Match CSI sequences: \\x1b[...m (SGR codes)\n    # Match cursor movements: \\x1b[<letter> (e.g., \\x1b[1A, \\x1b[2K)\n    # The pattern matches \\x1b[ followed by any sequence of characters that are not \\x1b,\n    # and ends with a letter or digit, but we specifically target common control sequences.\n    # A more robust pattern to catch all CSI sequences: \\x1b\\[[0-9;?]*[a-zA-Z]\n    # However, to specifically target SGR (\\x1b[...m) AND cursor movements (\\x1b[<letter>),\n    # we can use a broader match for CSI sequences and then refine if necessary.\n\n    # Pattern to match CSI sequences: \\x1b[...m or \\x1b[<letter>\n    # \\x1b\\[ matches the ESC character followed by '['\n    # [^m]* matches any character that is not 'm' zero or more times (for SGR)\n    # m matches the terminating 'm'\n    # | OR\n    # [^m]* matches any character that is not 'm' zero or more times (for cursor movements)\n    # [a-zA-Z] matches the final letter code.\n\n    # To capture both SGR (\\x1b[...m) and cursor movements (\\x1b[<letter>):\n    # 1. SGR: \\x1b\\[[0-9;]*m\n    # 2. Cursor movements: \\x1b\\[[0-9;?]*[A-Za-z] (where A-Za-z is the final command letter)\n\n    # Combining them into a single regex to remove all CSI sequences:\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 576,
+        "completion_tokens": 66,
+        "total_tokens": 642,
+        "generated_code": "import re\n\ndef strip_ansi_codes(text: str) -> tuple[str, int]:\n    clean = re.sub(r'\\x1b\\[[0-9;]*[a-zA-Z]', '', text)\n    return (clean, len(clean))\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 642,
+        "generated_code": "import re\n\ndef strip_ansi_codes(text: str) -> tuple[str, int]:\n    clean = re.sub(r'\\x1b\\[[0-9;]*[a-zA-Z]', '', text)\n    return (clean, len(clean))\n"
+      }
+    },
+    {
+      "task_id": "cl_rich_12",
+      "repo": "Textualize/rich",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "coalesce_adjacent_segments",
+      "skeletal_context_tokens": 135,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 180,
+        "total_tokens": 2228,
+        "generated_code": "def coalesce_adjacent_segments(segments: list[tuple[str, str]]) -> list[tuple[str, str]]:\n    \"\"\"Merge adjacent (text, style) segments sharing the same style.\"\"\"\n    if not segments:\n        return []\n\n    result = [segments[0]]\n    for i in range(1, len(segments)):\n        current_segment = segments[i]\n        last_merged_segment = result[-1]\n\n        if current_segment[1] == last_merged_segment[1]:\n            merged_text = last_merged_segment[0] + \" \" + current_segment[0]\n            result[-1] = (merged_text, current_segment[1])\n        else:\n            result.append(current_segment)\n\n    return result\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 492,
+        "completion_tokens": 174,
+        "total_tokens": 666,
+        "generated_code": "def coalesce_adjacent_segments(segments: list[tuple[str, str]]) -> list[tuple[str, str]]:\n    if not segments:\n        return []\n\n    result = [segments[0]]\n    for i in range(1, len(segments)):\n        current_segment = segments[i]\n        last_merged_segment = result[-1]\n        \n        if current_segment[1] == last_merged_segment[1]:\n            # Merge: append text\n            merged_text = last_merged_segment[0] + current_segment[0]\n            result[-1] = (merged_text, last_merged_segment[1])\n        else:\n            result.append(current_segment)\n            \n    return result\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 780,
+        "retry_completion_tokens": 167,
+        "total_tokens": 1613,
+        "generated_code": "def coalesce_adjacent_segments(segments: list[tuple[str, str]]) -> list[tuple[str, str]]:\n    if not segments:\n        return []\n\n    result = [segments[0]]\n    for i in range(1, len(segments)):\n        current_segment = segments[i]\n        last_merged_segment = result[-1]\n        \n        if current_segment[1] == last_merged_segment[1]:\n            merged_text = last_merged_segment[0] + current_segment[0]\n            result[-1] = (merged_text, last_merged_segment[1])\n        else:\n            result.append(current_segment)\n            \n    return result\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": true,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "pkg/runtime_dispatch.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "turn super().render_tokens(segs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/runtime_dispatch.py:10: in render_tokens\n    raise RuntimeError('Diamond MRO BorderMixin expected __mro_sync__ sentinel from cooperative super()')\nE   RuntimeError: Diamond MRO BorderMixin expected __mro_sync__ sentinel from cooperative super()\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_diamond_mro_panel_render - Runti...\n1 failed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_requests_13",
+      "repo": "psf/requests",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "should_strip_auth_on_redirect",
+      "skeletal_context_tokens": 165,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 186,
+        "total_tokens": 2234,
+        "generated_code": "from urllib.parse import urlparse\n\ndef should_strip_auth_on_redirect(old_url: str, new_url: str) -> bool:\n    \"\"\"Return True if Authorization header must be removed across redirect.\"\"\"\n    p_old = urlparse(old_url)\n    p_new = urlparse(new_url)\n\n    # Check if the scheme changed (e.g., http -> https)\n    if p_old.scheme != p_new.scheme:\n        return True\n\n    # Check if the hostname changed\n    if p_old.hostname != p_new.hostname:\n        return True\n\n    # Check if the port changed (e.g., :8443 -> default)\n    if p_old.port != p_new.port:\n        return True\n\n    return False\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 629,
+        "completion_tokens": 94,
+        "total_tokens": 723,
+        "generated_code": "from urllib.parse import urlparse\n\ndef should_strip_auth_on_redirect(old_url: str, new_url: str) -> bool:\n    \"\"\"Return True if Authorization header must be removed across redirect.\"\"\"\n    p_old = urlparse(old_url)\n    p_new = urlparse(new_url)\n    return p_old.hostname != p_new.hostname\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 779,
+        "retry_completion_tokens": 102,
+        "total_tokens": 1604,
+        "generated_code": "from urllib.parse import urlparse\n\ndef should_strip_auth_on_redirect(old_url: str, new_url: str, headers: dict[str, str] = None) -> bool:\n    p_old = urlparse(old_url)\n    p_new = urlparse(new_url)\n    return p_old.hostname != p_new.hostname or p_old.port != p_new.port\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": " r_same.get('Authorization') == 'Bearer secret'\nE   AssertionError: assert None == 'Bearer secret'\nE    +  where None = <built-in method get of dict object at 0x7b10b15fb7c0>('Authorization')\nE    +    where <built-in method get of dict object at 0x7b10b15fb7c0> = {'Accept': '*/*'}.get\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_same_origin_and_http_to_https_upgrade_on_standard_ports_preserve_auth\n1 failed in 0.02s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_requests_14",
+      "repo": "psf/requests",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "cookie_domain_matches",
+      "skeletal_context_tokens": 151,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 2048,
+        "completion_tokens": 122,
+        "total_tokens": 2170,
+        "generated_code": "def cookie_domain_matches(cookie_domain: str, request_host: str) -> bool:\n    \"\"\"Return True if request_host matches cookie_domain per RFC 6265 domain-match.\"\"\"\n    cd = cookie_domain.lstrip('.').lower()\n    rh = request_host.lower()\n\n    if rh == cd:\n        return True\n\n    if cd.endswith('.'):\n        return rh.endswith(cd)\n\n    if rh.endswith('.' + cd):\n        return True\n\n    return False\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 554,
+        "completion_tokens": 141,
+        "total_tokens": 695,
+        "generated_code": "def cookie_domain_matches(cookie_domain: str, request_host: str) -> bool:\n    cd = cookie_domain.lstrip('.').lower()\n    rh = request_host.lower()\n    if rh == cd:\n        return True\n    if rh.endswith('.' + cd):\n        return True\n    if rh.endswith(cd) and len(rh) > len(cd) and rh[-len(cd)] != cd[-1]:\n        return False\n    return rh.endswith(cd) and (len(rh) == len(cd) or rh[-len(cd)] == '.')\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 695,
+        "generated_code": "def cookie_domain_matches(cookie_domain: str, request_host: str) -> bool:\n    cd = cookie_domain.lstrip('.').lower()\n    rh = request_host.lower()\n    if rh == cd:\n        return True\n    if rh.endswith('.' + cd):\n        return True\n    if rh.endswith(cd) and len(rh) > len(cd) and rh[-len(cd)] != cd[-1]:\n        return False\n    return rh.endswith(cd) and (len(rh) == len(cd) or rh[-len(cd)] == '.')\n"
+      }
+    },
+    {
+      "task_id": "cl_requests_15",
+      "repo": "psf/requests",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "apply_hook_chain",
+      "skeletal_context_tokens": 219,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 2048,
+        "completion_tokens": 120,
+        "total_tokens": 2168,
+        "generated_code": "from typing import Callable, Any\n\ndef apply_hook_chain(hooks: list[Callable[[Any], Any]] | None, payload: Any) -> tuple[Any, int]:\n    \"\"\"Run hook callbacks sequentially; keep current payload if callback returns None.\"\"\"\n    if not hooks:\n        return (payload, 0)\n    cur = payload\n    for fn in hooks:\n        result = fn(cur)\n        if result is None:\n            continue\n        cur = result\n    return (cur, len(hooks))\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 672,
+        "completion_tokens": 104,
+        "total_tokens": 776,
+        "generated_code": "from typing import Callable, Any\n\ndef apply_hook_chain(hooks: list[Callable[[Any], Any]] | None, payload: Any) -> tuple[Any, int]:\n    if not hooks:\n        return (payload, 0)\n    cur = payload\n    for fn in hooks:\n        result = fn(cur)\n        if result is None:\n            continue\n        cur = result\n    return (cur, len(hooks))\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 776,
+        "generated_code": "from typing import Callable, Any\n\ndef apply_hook_chain(hooks: list[Callable[[Any], Any]] | None, payload: Any) -> tuple[Any, int]:\n    if not hooks:\n        return (payload, 0)\n    cur = payload\n    for fn in hooks:\n        result = fn(cur)\n        if result is None:\n            continue\n        cur = result\n    return (cur, len(hooks))\n"
+      }
+    },
+    {
+      "task_id": "cl_requests_16",
+      "repo": "psf/requests",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "encode_query_pairs",
+      "skeletal_context_tokens": 194,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 2048,
+        "completion_tokens": 174,
+        "total_tokens": 2222,
+        "generated_code": "def encode_query_pairs(params: dict[str, object] | list[tuple[str, object]]) -> list[tuple[str, str]]:\n    \"\"\"Flatten params into (key, str_val) pairs, omitting entries where value is None.\"\"\"\n    items = params.items() if isinstance(params, dict) else params\n    pairs: list[tuple[str, str]] = []\n    for k, v in items:\n        if v is None:\n            continue\n        if isinstance(v, (list, tuple)):\n            for item in v:\n                if item is not None:\n                    pairs.append((str(k), str(item)))\n        else:\n            pairs.append((str(k), str(v)))\n    return pairs\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 682,
+        "completion_tokens": 146,
+        "total_tokens": 828,
+        "generated_code": "def encode_query_pairs(params: dict[str, object] | list[tuple[str, object]]) -> list[tuple[str, str]]:\n    items = params.items() if isinstance(params, dict) else params\n    pairs: list[tuple[str, str]] = []\n    for k, v in items:\n        if isinstance(v, (list, tuple)):\n            for item in v:\n                if item is not None:\n                    pairs.append((str(k), str(item)))\n        elif v is not None:\n            pairs.append((str(k), str(v)))\n    return pairs\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 828,
+        "generated_code": "def encode_query_pairs(params: dict[str, object] | list[tuple[str, object]]) -> list[tuple[str, str]]:\n    items = params.items() if isinstance(params, dict) else params\n    pairs: list[tuple[str, str]] = []\n    for k, v in items:\n        if isinstance(v, (list, tuple)):\n            for item in v:\n                if item is not None:\n                    pairs.append((str(k), str(item)))\n        elif v is not None:\n            pairs.append((str(k), str(v)))\n    return pairs\n"
+      }
+    },
+    {
+      "task_id": "cl_requests_17",
+      "repo": "psf/requests",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "compute_backoff_delay",
+      "skeletal_context_tokens": 206,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 132,
+        "total_tokens": 2180,
+        "generated_code": "def compute_backoff_delay(attempt: int, backoff_factor: float, max_backoff: float = 60.0) -> tuple[float, bool]:\n    \"\"\"Return (delay_seconds, was_capped) for 1-indexed retry attempt.\"\"\"\n    if attempt <= 1:\n        return (0.0, False)\n    delay = backoff_factor * (2 ** (attempt - 1))\n    if delay > max_backoff:\n        return (max_backoff, True)\n    return (float(delay), False)\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 686,
+        "completion_tokens": 112,
+        "total_tokens": 798,
+        "generated_code": "def compute_backoff_delay(attempt: int, backoff_factor: float, max_backoff: float = 60.0) -> tuple[float, bool]:\n    if attempt <= 1:\n        return (0.0, False)\n    delay = backoff_factor * (2 ** (attempt - 1))\n    if delay > max_backoff:\n        return (max_backoff, True)\n    return (float(delay), False)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 840,
+        "retry_completion_tokens": 112,
+        "total_tokens": 1750,
+        "generated_code": "def compute_backoff_delay(attempt: int, backoff_factor: float, max_backoff: float = 60.0) -> tuple[float, bool]:\n    if attempt <= 1:\n        return (0.0, False)\n    delay = backoff_factor * (2 ** (attempt - 1))\n    if delay > max_backoff:\n        return (max_backoff, True)\n    return (float(delay), False)\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "': False} == {'delay': 0.5...apped': False}\nE     \nE     Omitting 1 identical items, use -vv to show\nE     Differing items:\nE     {'delay': 0.0} != {'delay': 0.5}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_standard_urllib3_backoff_schedule_and_cap\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_requests_18",
+      "repo": "psf/requests",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "resolve_adapter_mount",
+      "skeletal_context_tokens": 168,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 144,
+        "total_tokens": 2192,
+        "generated_code": "def resolve_adapter_mount(url: str, mounts: dict[str, str]) -> tuple[str, str]:\n    \"\"\"Return (matched_prefix, adapter_tag) for url from mounts table.\"\"\"\n    best_match = None\n    longest_match = \"\"\n\n    for prefix, adapter in mounts.items():\n        if url.startswith(prefix):\n            if len(prefix) > len(longest_match):\n                longest_match = prefix\n                best_match = (prefix, adapter)\n\n    if best_match:\n        return best_match\n    raise KeyError(f'No adapter found for {url}')\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 605,
+        "completion_tokens": 102,
+        "total_tokens": 707,
+        "generated_code": "def resolve_adapter_mount(url: str, mounts: dict[str, str]) -> tuple[str, str]:\n    sorted_mounts = sorted(mounts.keys(), key=len, reverse=True)\n    for prefix in sorted_mounts:\n        adapter = mounts[prefix]\n        if url.startswith(prefix):\n            return (prefix, adapter)\n    raise KeyError(f'No adapter found for {url}')\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 931,
+        "retry_completion_tokens": 120,
+        "total_tokens": 1758,
+        "generated_code": "def resolve_adapter_mount(url: str, mounts: dict[str, str]) -> tuple[str, str]:\n    url_lower = url.lower()\n    sorted_mounts = sorted(mounts.keys(), key=len, reverse=True)\n    for prefix in sorted_mounts:\n        prefix_lower = prefix.lower()\n        if url_lower.startswith(prefix_lower):\n            return (prefix, mounts[prefix])\n    raise KeyError(f'No adapter found for {url}')\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "\nE     Differing items:\nE     {'prefix': 'https://api.example.com/v1'} != {'prefix': 'https://'}\nE     {'adapter': 'v1_custom'} != {'adapter': 'default_tls'}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_longest_prefix_on_segment_boundary - Assert...\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_httpx_19",
+      "repo": "encode/httpx",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "join_client_base_url",
+      "skeletal_context_tokens": 197,
+      "flat_react_grep": {
+        "syntax_valid": false,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 448,
+        "total_tokens": 2496,
+        "generated_code": "import urljoin\n\ndef join_client_base_url(base_url: str, target_url: str) -> tuple[str, bool]:\n    \"\"\"Join client base_url and target_url preserving base_url path prefix.\"\"\"\n    if target_url.startswith(('http://', 'https://')):\n        return (target_url, True)\n    \n    # Ensure base_url ends with a path separator if it doesn't already, \n    # to prevent urljoin from stripping the path segment if target_url starts with '/'\n    if not base_url.endswith('/') and not base_url.endswith('\\\\'):\n        # Check if the last segment of base_url is a directory name or a file name\n        # If it looks like a domain/host, we might need to append a separator.\n        # However, since the requirement is to preserve '/v1', we must ensure \n        # urljoin treats base_url as a directory path if target_url is absolute path segment.\n        pass # Relying on urljoin behavior, but if it strips '/v1', we need a workaround.\n\n    # The issue description implies that when base_url is 'https://api.example.com/v1' \n    # and target_url is '/users', urljoin produces 'https://api.example.com/users'.\n    # This happens because urljoin treats '/users' as an absolute path relative to the authority, \n    # effectively discarding the path part of base_url if it ends in a path segment.\n    \n    # To force preservation of the path segment '/v1', we can append a separator \n    # to the base_url if it doesn't already have one, before joining.\n    \n    if not base_url.endswith('/') and not base_url.endswith('\\\\'):\n        # Check if the last part of the base_url looks like a domain/host rather than a directory path\n        # A simple heuristic: if it contains a path separator, we assume it's\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 670,
+        "completion_tokens": 174,
+        "total_tokens": 844,
+        "generated_code": "from urllib.parse import urljoin\n\ndef join_client_base_url(base_url: str, target_url: str) -> tuple[str, bool]:\n    \"\"\"Join client base_url and target_url preserving base_url path prefix.\"\"\"\n    if target_url.startswith(('http://', 'https://')):\n        return (target_url, True)\n    \n    if base_url.endswith('/') and not target_url.startswith('/'):\n        return (base_url + target_url, False)\n    \n    if not base_url.endswith('/') and target_url.startswith('/'):\n        return (base_url + target_url, False)\n        \n    return (urljoin(base_url, target_url), False)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 844,
+        "generated_code": "from urllib.parse import urljoin\n\ndef join_client_base_url(base_url: str, target_url: str) -> tuple[str, bool]:\n    \"\"\"Join client base_url and target_url preserving base_url path prefix.\"\"\"\n    if target_url.startswith(('http://', 'https://')):\n        return (target_url, True)\n    \n    if base_url.endswith('/') and not target_url.startswith('/'):\n        return (base_url + target_url, False)\n    \n    if not base_url.endswith('/') and target_url.startswith('/'):\n        return (base_url + target_url, False)\n        \n    return (urljoin(base_url, target_url), False)\n"
+      }
+    },
+    {
+      "task_id": "cl_httpx_20",
+      "repo": "encode/httpx",
+      "tier": "tier2_hop1_caller_bridge",
+      "bridge_func": "fold_multivalue_headers",
+      "skeletal_context_tokens": 196,
+      "flat_react_grep": {
+        "syntax_valid": false,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 448,
+        "total_tokens": 2496,
+        "generated_code": "def fold_multivalue_headers(raw_headers: list[tuple[str, str]]) -> list[tuple[str, str]]:\n    \"\"\"Lowercase header names and fold duplicates with ', ', keeping set-cookie separate.\"\"\"\n    folded: dict[str, list[str]] = {}\n    for k, v in raw_headers:\n        lk = k.lower()\n        if lk not in folded:\n            folded[lk] = [v]\n        else:\n            if lk != 'set-cookie':\n                # Fold duplicates with ', '\n                folded[lk].append(v)\n            else:\n                # Keep set-cookie separate\n                folded[lk].append(v)\n\n    result: list[tuple[str, str]] = []\n    for key, values in folded.items():\n        if key == 'set-cookie':\n            # Set-cookie must remain separate entries\n            for value in values:\n                result.append((key, value))\n        else:\n            # Fold other headers\n            if len(values) == 1:\n                result.append((key, values[0]))\n            else:\n                # Join with ', '\n                result.append((key, \", \".join(values)))\n\n    # Re-implementing the logic to match the expected output format (list of tuples)\n    # while respecting the specific rule for 'set-cookie'.\n\n    final_output: list[tuple[str, str]] = []\n    seen_keys: dict[str, list[str]] = {}\n\n    for k, v in raw_headers:\n        lk = k.lower()\n        if lk not in seen_keys:\n            seen_keys[lk] = []\n        seen_keys[lk].append(v)\n\n    for key, values in seen_keys.items():\n        if key == 'set-cookie':\n            # 'set-cookie' must remain separate entries\n            for value in values:\n                final_output.append((key,\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 668,
+        "completion_tokens": 353,
+        "total_tokens": 1021,
+        "generated_code": "def fold_multivalue_headers(raw_headers: list[tuple[str, str]]) -> list[tuple[str, str]]:\n    \"\"\"Lowercase header names and fold duplicates with ', ', keeping set-cookie separate.\"\"\"\n    folded: dict[str, list[str]] = {}\n    for k, v in raw_headers:\n        lk = k.lower()\n        if lk not in folded:\n            folded[lk] = [v]\n        else:\n            if lk == 'set-cookie':\n                folded[lk].append(v)\n            else:\n                # Fold duplicates with ', '\n                if len(folded[lk]) == 1:\n                    folded[lk].append(v)\n                else:\n                    # Append to existing list, but handle the comma separation logic later\n                    # For now, we just accumulate all values for this key\n                    folded[lk].append(v)\n\n    result: list[tuple[str, str]] = []\n    for lk, values in folded.items():\n        if lk == 'set-cookie':\n            # Keep set-cookie separate entries\n            for val in values:\n                result.append((lk, val))\n        else:\n            # Fold duplicates with ', '\n            if len(values) == 1:\n                result.append((lk, values[0]))\n            else:\n                # Combine all values into a single string separated by ', '\n                combined_value = ', '.join(values)\n                result.append((lk, combined_value))\n\n    return result\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 1,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 0,
+        "retry_completion_tokens": 0,
+        "total_tokens": 1021,
+        "generated_code": "def fold_multivalue_headers(raw_headers: list[tuple[str, str]]) -> list[tuple[str, str]]:\n    \"\"\"Lowercase header names and fold duplicates with ', ', keeping set-cookie separate.\"\"\"\n    folded: dict[str, list[str]] = {}\n    for k, v in raw_headers:\n        lk = k.lower()\n        if lk not in folded:\n            folded[lk] = [v]\n        else:\n            if lk == 'set-cookie':\n                folded[lk].append(v)\n            else:\n                # Fold duplicates with ', '\n                if len(folded[lk]) == 1:\n                    folded[lk].append(v)\n                else:\n                    # Append to existing list, but handle the comma separation logic later\n                    # For now, we just accumulate all values for this key\n                    folded[lk].append(v)\n\n    result: list[tuple[str, str]] = []\n    for lk, values in folded.items():\n        if lk == 'set-cookie':\n            # Keep set-cookie separate entries\n            for val in values:\n                result.append((lk, val))\n        else:\n            # Fold duplicates with ', '\n            if len(values) == 1:\n                result.append((lk, values[0]))\n            else:\n                # Combine all values into a single string separated by ', '\n                combined_value = ', '.join(values)\n                result.append((lk, combined_value))\n\n    return result\n"
+      }
+    },
+    {
+      "task_id": "cl_httpx_21",
+      "repo": "encode/httpx",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "normalize_timeout_config",
+      "skeletal_context_tokens": 252,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 329,
+        "total_tokens": 2377,
+        "generated_code": "def normalize_timeout_config(timeout: float | tuple | None, default_timeout: float = 5.0) -> dict[str, float | None]:\n    \"\"\"Normalize scalar, 2-tuple (connect, read), or 4-tuple into {connect, read, write, pool}.\"\"\"\n    if timeout is None or isinstance(timeout, (int, float)):\n        val = float(timeout) if timeout is not None else None\n        return {'connect': val, 'read': val, 'write': val, 'pool': val}\n\n    if isinstance(timeout, tuple):\n        if len(timeout) == 2:\n            connect, read = timeout\n            return {'connect': float(connect), 'read': float(read), 'write': default_timeout, 'pool': default_timeout}\n        elif len(timeout) == 4:\n            c, r, w, p = timeout\n            return {'connect': float(c), 'read': float(r), 'write': float(w), 'pool': float(p)}\n        else:\n            # Handle unexpected tuple length gracefully, defaulting to default_timeout\n            return {'connect': default_timeout, 'read': default_timeout, 'write': default_timeout, 'pool': default_timeout}\n    \n    # Fallback for any other unexpected type\n    return {'connect': default_timeout, 'read': default_timeout, 'write': default_timeout, 'pool': default_timeout}\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 781,
+        "completion_tokens": 245,
+        "total_tokens": 1026,
+        "generated_code": "def normalize_timeout_config(timeout: float | tuple | None, default_timeout: float = 5.0) -> dict[str, float | None]:\n    if timeout is None or isinstance(timeout, (int, float)):\n        val = float(timeout) if timeout is not None else None\n        return {'connect': val, 'read': val, 'write': val, 'pool': val}\n    elif isinstance(timeout, tuple):\n        if len(timeout) == 2:\n            connect, read = timeout\n            return {'connect': float(connect), 'read': float(read), 'write': default_timeout, 'pool': default_timeout}\n        elif len(timeout) == 4:\n            c, r, w, p = timeout\n            return {'connect': float(c), 'read': float(r), 'write': float(w), 'pool': float(p)}\n        else:\n            raise ValueError(\"Timeout tuple must have 2 or 4 elements.\")\n    else:\n        raise TypeError(\"Timeout must be float, tuple, or None.\")\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": false,
+        "retry_prompt_tokens": 987,
+        "retry_completion_tokens": 293,
+        "total_tokens": 2306,
+        "generated_code": "def normalize_timeout_config(timeout: float | tuple | None, default_timeout: float = 5.0) -> dict[str, float | None]:\n    if timeout is None or isinstance(timeout, (int, float)):\n        val = float(timeout) if timeout is not None else None\n        return {'connect': val, 'read': val, 'write': val, 'pool': val}\n    elif isinstance(timeout, tuple):\n        if len(timeout) == 2:\n            connect, read = timeout\n            return {'connect': float(connect) if connect is not None else None, 'read': float(read) if read is not None else None, 'write': default_timeout, 'pool': default_timeout}\n        elif len(timeout) == 4:\n            c, r, w, p = timeout\n            return {'connect': float(c) if c is not None else None, 'read': float(r) if r is not None else None, 'write': float(w) if w is not None else None, 'pool': float(p) if p is not None else None}\n        else:\n            raise ValueError(\"Timeout tuple must have 2 or 4 elements.\")\n    else:\n        raise TypeError(\"Timeout must be float, tuple, or None.\")\n"
+      }
+    },
+    {
+      "task_id": "cl_httpx_22",
+      "repo": "encode/httpx",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "iter_byte_chunks",
+      "skeletal_context_tokens": 187,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 156,
+        "total_tokens": 2204,
+        "generated_code": "def iter_byte_chunks(data: bytes, chunk_size: int | None) -> tuple[list[bytes], int]:\n    \"\"\"Split bytes into chunks of chunk_size and return (chunks_list, total_bytes).\"\"\"\n    if chunk_size is None:\n        return ([data], len(data))\n\n    if chunk_size <= 0:\n        if len(data) == 0:\n            return ([], 0)\n        raise ValueError('chunk_size must be positive')\n\n    chunks = [data[i : i + chunk_size] for i in range(0, len(data), chunk_size)]\n    return (chunks, len(data))\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 651,
+        "completion_tokens": 143,
+        "total_tokens": 794,
+        "generated_code": "def iter_byte_chunks(data: bytes, chunk_size: int | None) -> tuple[list[bytes], int]:\n    if chunk_size is None:\n        return ([data], len(data))\n\n    if chunk_size <= 0:\n        if not data:\n            return ([], 0)\n        raise ValueError('chunk_size must be positive')\n\n    if not data:\n        return ([], 0)\n\n    chunks = [data[i : i + chunk_size] for i in range(0, len(data), chunk_size)]\n    return (chunks, len(data))\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 849,
+        "retry_completion_tokens": 143,
+        "total_tokens": 1786,
+        "generated_code": "def iter_byte_chunks(data: bytes, chunk_size: int | None) -> tuple[list[bytes], int]:\n    if chunk_size is None:\n        return ([data], len(data))\n\n    if chunk_size <= 0:\n        if not data:\n            return ([], 0)\n        raise ValueError('chunk_size must be positive')\n\n    if not data:\n        return ([], 0)\n\n    chunks = [data[i : i + chunk_size] for i in range(0, len(data), chunk_size)]\n    return (chunks, len(data))\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "    Omitting 1 identical items, use -vv to show\nE     Differing items:\nE     {'num_chunks': 1} != {'num_chunks': 0}\nE     {'chunks': [b'']} != {'chunks': []}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_empty_bytes_and_invalid_chunk_size - Assert...\n1 failed in 0.01s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_httpx_23",
+      "repo": "encode/httpx",
+      "tier": "tier1_single_module_contract",
+      "bridge_func": "normalize_origin_tuple",
+      "skeletal_context_tokens": 172,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": true,
+        "resolved": true,
+        "prompt_tokens": 2048,
+        "completion_tokens": 300,
+        "total_tokens": 2348,
+        "generated_code": "from urllib.parse import urlparse\n\ndef normalize_origin_tuple(url: str) -> tuple[str, str, int]:\n    \"\"\"Return (canonical_origin_str, scheme, effective_port) for HTTP/HTTPS URL.\"\"\"\n    p = urlparse(url)\n    scheme = p.scheme.lower()\n    host = p.hostname or ''\n    \n    if not host:\n        return (f'{scheme}://{host}', scheme, 0)\n\n    # Lowercase hostname\n    host = host.lower()\n\n    # Determine port, stripping default ports 80/443 if present\n    port = p.port\n    if port is None:\n        port = 443 if scheme == 'https' else 80\n    \n    # Check if the port is a default port and strip it from the string representation if it is\n    if port == 80 and scheme == 'http':\n        return (f'{scheme}://{host}', scheme, 80)\n    if port == 443 and scheme == 'https':\n        return (f'{scheme}://{host}', scheme, 443)\n    \n    # If it's not a default port, include it in the string representation\n    return (f'{scheme}://{host}:{port}', scheme, port)\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "prompt_tokens": 634,
+        "completion_tokens": 170,
+        "total_tokens": 804,
+        "generated_code": "from urllib.parse import urlparse\n\ndef normalize_origin_tuple(url: str) -> tuple[str, str, int]:\n    p = urlparse(url)\n    scheme = p.scheme.lower()\n    host = p.hostname.lower() if p.hostname else ''\n    port = p.port\n    if port is None:\n        if scheme == 'https':\n            port = 443\n        elif scheme == 'http':\n            port = 80\n        else:\n            port = None\n\n    if port is not None:\n        return (f'{scheme}://{host}:{port}', scheme, port)\n    else:\n        return (f'{scheme}://{host}', scheme, 0)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": false,
+        "hop1_caller_pytest_pass": true,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 871,
+        "retry_completion_tokens": 171,
+        "total_tokens": 1846,
+        "generated_code": "from urllib.parse import urlparse\n\ndef normalize_origin_tuple(url: str) -> tuple[str, str, int]:\n    p = urlparse(url)\n    scheme = p.scheme.lower()\n    host = p.hostname.lower() if p.hostname else ''\n    port = p.port\n\n    if port is None:\n        if scheme == 'https':\n            port = 443\n        elif scheme == 'http':\n            port = 80\n        else:\n            port = 0\n\n    if port != 0:\n        return (f'{scheme}://{host}:{port}', scheme, port)\n    else:\n        return (f'{scheme}://{host}', scheme, 0)\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": false,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "\nE     \nE     Omitting 2 identical items, use -vv to show\nE     Differing items:\nE     {'origin': 'https://example.com:443'} != {'origin': 'https://example.com'}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_target.py::test_default_ports_stripped_and_host_lowercased\n1 failed in 0.02s\n[test_caller_regression.py (PASS)]\n.                                                                        [100%]\n1 passed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    },
+    {
+      "task_id": "cl_httpx_24",
+      "repo": "encode/httpx",
+      "tier": "tier3_multihop_dynamic_dispatch",
+      "bridge_func": "release_pool_lease",
+      "skeletal_context_tokens": 182,
+      "flat_react_grep": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 2048,
+        "completion_tokens": 98,
+        "total_tokens": 2146,
+        "generated_code": "def release_pool_lease(active_leases: set[str], lease_id: str) -> tuple[str, bool]:\n    \"\"\"Remove lease_id from active_leases and return (lease_id, was_present).\"\"\"\n    try:\n        active_leases.remove(lease_id)\n        return (lease_id, True)\n    except KeyError:\n        return (lease_id, False)\n"
+      },
+      "steiner_single_shot": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "prompt_tokens": 597,
+        "completion_tokens": 77,
+        "total_tokens": 674,
+        "generated_code": "def release_pool_lease(active_leases: set[str], lease_id: str) -> tuple[str, bool]:\n    if lease_id in active_leases:\n        active_leases.remove(lease_id)\n        return (lease_id, True)\n    return (lease_id, False)\n"
+      },
+      "g4_graph_agent_full": {
+        "syntax_valid": true,
+        "target_pytest_pass": true,
+        "hop1_caller_pytest_pass": false,
+        "resolved": false,
+        "verifier_attempts": 2,
+        "abstained_via_selective_skipping": true,
+        "retry_prompt_tokens": 728,
+        "retry_completion_tokens": 77,
+        "total_tokens": 1479,
+        "generated_code": "def release_pool_lease(active_leases: set[str], lease_id: str) -> tuple[str, bool]:\n    if lease_id in active_leases:\n        active_leases.remove(lease_id)\n        return (lease_id, True)\n    return (lease_id, False)\n"
+      },
+      "failure_analysis": {
+        "has_runtime_dispatch_module": true,
+        "actual_files_in_workspace": [
+          "pkg/__init__.py",
+          "pkg/bridge.py",
+          "pkg/caller.py",
+          "pkg/legacy_helpers.py",
+          "pkg/runtime_dispatch.py",
+          "tests/test_caller_regression.py",
+          "tests/test_target.py"
+        ],
+        "pytest_failure_excerpt": "e(pool, 'conn_1')['released'] is False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npkg/runtime_dispatch.py:9: in _wrapped\n    raise RuntimeError('Closure guard _closure_epoch was not reset across idempotent release')\nE   RuntimeError: Closure guard _closure_epoch was not reset across idempotent release\n=========================== short test summary info ============================\nFAILED tests/test_caller_regression.py::test_transactional_decorator_closure_idempotent_release\n1 failed in 0.01s",
+        "clean_git_rollback_executed": true
+      }
+    }
+  ]
+}

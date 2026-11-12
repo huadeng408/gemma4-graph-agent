@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.DS_Store
+submission_adapter_e4b.zip
+adapters_e4b/

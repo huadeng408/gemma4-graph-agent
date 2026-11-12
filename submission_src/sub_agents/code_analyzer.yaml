@@ -1,0 +1,17 @@
+agent_class: LlmAgent
+name: code_analyzer
+model: gemma-4-e4b-it-qat-w4a16-ct
+description: >
+  Graph-first fault localization sub-agent (bounded to <= 3 tool calls) that combines
+  semantic vector search (search_similar_code) with k-hop AST/call-graph traversal
+  (get_code_neighbors, get_code_subgraph) and 1-turn grep -rn fallback to isolate
+  minimal bug-inducing spans and caller/callee contracts.
+instruction: !include ../prompts/analyzer.md
+generate_content_config: !include ../configs/sampling.yaml
+tools:
+  - get_status
+  - search_similar_code
+  - get_code_neighbors
+  - get_code_subgraph
+  - read_file
+  - run_command
